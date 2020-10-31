@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from '../auth/auth.module';
 import { LocationsModule } from '../locations/locations.module';
+import { WorkShiftsModule } from '../work-shifts/work-shifts.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { LocationsModule } from '../locations/locations.module';
       useFindAndModify: false,
     }),
     AuthModule,
-    LocationsModule
+    LocationsModule,
+    WorkShiftsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

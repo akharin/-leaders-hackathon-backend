@@ -6,5 +6,5 @@ export interface IDbUserLocationDoc extends Document {
   lat: number;
   lng: number;
   alt: number;
-  time: Date;
+  date: Date;
 }

@@ -8,7 +8,7 @@ export class AuthService {
   constructor(@InjectModel('User') private userModel: Model<IDbUserDoc>) {}
 
   async login(phone: string, password: string) {
-    const user = await this.userModel.findOne({ phone, password });
+    const user = await this.userModel.findOne({ phone, password }).exec();
     if (!user) {
       throw new ForbiddenException();
     }

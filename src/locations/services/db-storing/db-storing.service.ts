@@ -35,17 +35,19 @@ export class DbStoringService {
       if (byUsers.hasOwnProperty(userId)) {
         const item = byUsers[userId];
         // Проверяем, чтобы такой записи в БД не было
-        const existingRecord = await this.locationModel.findOne({
-          userId,
-          objectId: item.value.objectId,
-          time: new Date(item.time),
-        });
+        const existingRecord = await this.locationModel
+          .findOne({
+            userId,
+            objectId: item.value.objectId,
+            date: new Date(item.date),
+          })
+          .exec();
         if (!existingRecord) {
           // Сохраняем в БД
           await this.locationModel.create({
             ...item.value,
             userId,
-            time: item.time,
+            date: item.date,
           });
         }
       }

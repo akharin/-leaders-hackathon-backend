@@ -85,16 +85,16 @@ export class RedisStoringService {
    */
   async getLastLocationsByUsers(keys: string[]) {
     const byUsers: {
-      [userId: string]: { ttl: number; value: IUserLocation; time: number };
+      [userId: string]: { ttl: number; value: IUserLocation; date: number };
     } = {};
     for (const key of keys) {
       const [ttl, jsonValue] = await this.getLocationTtlAndValue(key);
       const value: IUserLocation = JSON.parse(jsonValue);
-      // TODO Получать время создания из отдельного ключа в redis
-      const time = +key.substring(key.lastIndexOf(':') + 1);
+      // TODO Получать дату создания из отдельного ключа в redis
+      const date = +key.substring(key.lastIndexOf(':') + 1);
 
       if (!byUsers[value.userId] || byUsers[value.userId].ttl < ttl) {
-        byUsers[value.userId] = { ttl, value, time };
+        byUsers[value.userId] = { ttl, value, date };
       }
     }
     return byUsers;
