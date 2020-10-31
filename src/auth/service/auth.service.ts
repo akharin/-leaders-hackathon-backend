@@ -1,14 +1,12 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { IDbUserDoc } from '../interfaces/user.interface';
+import { UsersService } from '../../users/services/users/users.service';
 
 @Injectable()
 export class AuthService {
-  constructor(@InjectModel('User') private userModel: Model<IDbUserDoc>) {}
+  constructor(private usersService: UsersService) {}
 
   async login(phone: string, password: string) {
-    const user = await this.userModel.findOne({ phone, password }).exec();
+    const user = await this.usersService.getModel().findOne({ phone, password }).exec();
     if (!user) {
       throw new ForbiddenException();
     }
@@ -26,7 +24,7 @@ export class AuthService {
     organization: string,
     position: string,
   ) {
-    return this.userModel.create({
+    return this.usersService.getModel().create({
       phone,
       password,
       name,
