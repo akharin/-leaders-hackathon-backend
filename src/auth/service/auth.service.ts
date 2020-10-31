@@ -5,8 +5,7 @@ import { IDbUserDoc } from '../interfaces/user.interface';
 
 @Injectable()
 export class AuthService {
-  constructor(@InjectModel('User') private userModel: Model<IDbUserDoc>) {
-  }
+  constructor(@InjectModel('User') private userModel: Model<IDbUserDoc>) {}
 
   async login(phone: string, password: string) {
     const user = await this.userModel.findOne({ phone, password });
@@ -20,7 +19,13 @@ export class AuthService {
     // TODO
   }
 
-  register(phone: string, password: string, name: string, organization: string, position: string) {
+  register(
+    phone: string,
+    password: string,
+    name: string,
+    organization: string,
+    position: string,
+  ) {
     return this.userModel.create({
       phone,
       password,
