@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from '../auth/auth.module';
+import { LocationsModule } from '../locations/locations.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { AuthModule } from '../auth/auth.module';
       useFindAndModify: false,
     }),
     AuthModule,
+    LocationsModule
   ],
   controllers: [AppController],
   providers: [AppService],
