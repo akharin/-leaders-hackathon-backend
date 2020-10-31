@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from '../auth/auth.module';
 import { LocationsModule } from '../locations/locations.module';
 import { WorkShiftsModule } from '../work-shifts/work-shifts.module';
+import { ObjectsModule } from '../objects/objects.module';
 
 @Module({
   imports: [
@@ -15,8 +14,7 @@ import { WorkShiftsModule } from '../work-shifts/work-shifts.module';
     AuthModule,
     LocationsModule,
     WorkShiftsModule,
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+    ObjectsModule
+  ]
 })
 export class AppModule {}
