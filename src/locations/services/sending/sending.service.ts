@@ -15,6 +15,7 @@ export class SendingService {
 
   async startWatching(socket: Socket, objectId: string) {
     await promisify(socket.join).bind(socket)(objectId);
+    await this.sendLocationsToClient();
     return { ok: true };
   }
 

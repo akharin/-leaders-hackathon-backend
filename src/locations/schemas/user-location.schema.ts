@@ -24,7 +24,7 @@ export const UserLocationSchema = new Schema<IDbUserLocationDoc>({
     type: Number,
     required: true,
   },
-  time: {
+  date: {
     type: Date,
     required: true,
   },

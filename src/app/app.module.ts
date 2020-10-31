@@ -4,6 +4,7 @@ import { AuthModule } from '../auth/auth.module';
 import { LocationsModule } from '../locations/locations.module';
 import { WorkShiftsModule } from '../work-shifts/work-shifts.module';
 import { ObjectsModule } from '../objects/objects.module';
+import { UsersModule } from '../users/users.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { ObjectsModule } from '../objects/objects.module';
     AuthModule,
     LocationsModule,
     WorkShiftsModule,
-    ObjectsModule
-  ]
+    ObjectsModule,
+    UsersModule,
+  ],
 })
 export class AppModule {}
