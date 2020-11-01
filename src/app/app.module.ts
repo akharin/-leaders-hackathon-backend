@@ -5,6 +5,7 @@ import { LocationsModule } from '../locations/locations.module';
 import { WorkShiftsModule } from '../work-shifts/work-shifts.module';
 import { ObjectsModule } from '../objects/objects.module';
 import { UsersModule } from '../users/users.module';
+import { AppController } from './controller/app.controller';
 
 @Module({
   imports: [
@@ -18,5 +19,6 @@ import { UsersModule } from '../users/users.module';
     ObjectsModule,
     UsersModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
